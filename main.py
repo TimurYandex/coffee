@@ -10,7 +10,7 @@ class AddEditCoffeeForm(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        uic.loadUi('./UI/addEditCoffeeForm.ui', self)
         self.setWindowTitle("Добавить/редактировать кофе")
         self.add_button.clicked.connect(self.add_coffee)
         self.edit_button.clicked.connect(self.edit_coffee)
@@ -86,8 +86,8 @@ class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Кофе")
-        self.DATABASE = './coffee.sqlite'
-        uic.loadUi('main.ui', self)
+        self.DATABASE = './data/coffee.sqlite'
+        uic.loadUi('./UI/MyWidget.ui', self)
         self.data_update()
         self.add_button.clicked.connect(self.open_addEditCoffeeForm)
 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
 
 def createbase():
-    conn = sqlite3.connect('coffee.sqlite')
+    conn = sqlite3.connect('data/coffee.sqlite')
     cursor = conn.cursor()
 
     cursor.execute('''
