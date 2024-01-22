@@ -5,12 +5,15 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, \
     QDialog
 
+from addEditCoffeeForm import Ui_Dialog
+from MyWidget import Ui_MainWindow
 
-class AddEditCoffeeForm(QDialog):
+class AddEditCoffeeForm(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
-        uic.loadUi('./UI/addEditCoffeeForm.ui', self)
+        self.setupUi(self)
+        # uic.loadUi('./UI/addEditCoffeeForm.ui', self)
         self.setWindowTitle("Добавить/редактировать кофе")
         self.add_button.clicked.connect(self.add_coffee)
         self.edit_button.clicked.connect(self.edit_coffee)
@@ -82,12 +85,13 @@ class AddEditCoffeeForm(QDialog):
         self.parent.data_update()
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Кофе")
         self.DATABASE = './data/coffee.sqlite'
-        uic.loadUi('./UI/MyWidget.ui', self)
+        self.setupUi(self)
+        # uic.loadUi('./UI/MyWidget.ui', self)
         self.data_update()
         self.add_button.clicked.connect(self.open_addEditCoffeeForm)
 
