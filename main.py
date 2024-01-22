@@ -1,7 +1,6 @@
 import sqlite3
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, \
     QDialog
 
@@ -89,7 +88,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Кофе")
-        self.DATABASE = './data/coffee.sqlite'
+        self.DATABASE = r'./data/coffee.sqlite'
         self.setupUi(self)
         # uic.loadUi('./UI/MyWidget.ui', self)
         self.data_update()
