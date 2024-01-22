@@ -1,0 +1,1 @@
+python -m nuitka --output-dir=./release --enable-plugin=pyqt5 --standalone --onefile --include-data-files=./data/coffee.sqlite=./data/coffee.sqlite --disable-console --remove-output main.py
